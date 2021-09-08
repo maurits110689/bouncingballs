@@ -1,42 +1,42 @@
-var x, y, v;
+class Ball{
+ constructor(x,y,w,h,vx,vy,_color){
+   this.x = x;
+   this.y = y;
+   this.width= w;
+   this.height = h;
+   this.vx = vx;
+   this.vy = vy;
+   this.color = _color;
+ }
+ 
+ draw(){
+  fill(this.color)
+  ellipse(this.x,this.y,50,50);
+    this.x = this.x + this.vx;
+    this.y = this.y + this.vy;
+
+    if(this.x > 500 || this.x <= 0){
+      this.vx = this.vx * -1;
+    } 
+
+    if(this.y > 400 || this.y <= 0){
+      this.vy = this.vy * -1;
+    }
+  }
+}
+
+var ball1, ball2, ball3;
 
 function setup() {
 	createCanvas(500, 400);
-
-  x = 0;
-  x2 = 50;
-  y = 200;
-  y2 = 100;
-  vx = 5;
-  vx2 = 5;
-  vy = 10;
-  vy2 = 10;
+  ball1 = new Ball(300,200,50,50,5,5,"lightblue");
+  ball2 = new Ball(30,200,50,50,15,5,"lightyellow");
+  ball3 = new Ball(30,200,50,50,5,5,"lightgreen");
 }
 
 function draw() {
-	background(225);
-
-  ellipse(x,y,50,50);
-  x = x + vx;
-  y = y + vy;
-
-  ellipse(x2,y2,50,50);
-  x2 = x2 + vx2;
-  y2 = y2 + vy2;
-
-  if(x > 500 || x <= 0){
-    vx = vx * -1;
-  } 
-
-  if(y > 400 || y <= 0){
-    vy = vy * -1;
-  }
-
-  if(x2 > 500 || x2 <= 0){
-    vx2 = vx2 * -1;
-  } 
-
-  if(y2 > 400 || y2 <= 0){
-    vy2 = vy2 * -1;
-  }
+	background(224, 187, 228)
+  ball1.draw();
+  ball2.draw();
+  ball3.draw();
 }
